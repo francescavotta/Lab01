@@ -12,7 +12,7 @@ public class Parole {
 	}
 	
 	public void addParola(String p) {
-		lista.add(p);
+			lista.add(p);
 	}
 	
 	public List<String> getElenco() {
