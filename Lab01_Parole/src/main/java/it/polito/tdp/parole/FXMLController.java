@@ -44,15 +44,17 @@ public class FXMLController {
     	
     	String parola = txtParola.getText();
     	
-    	long startTime = System.nanoTime();
+    	long startTime = System.nanoTime();//double
     	elenco.addParola(parola);
-    	long time =   System.nanoTime()- startTime;
+    	long time =   System.nanoTime()- startTime;//double
+    	//dividere per 1e9 per avere i secondi
     	
     	List<String> daStampare = elenco.getElenco();
     	String stampa= "";
     	for(String s: daStampare) {
 			stampa = stampa + s + "\n";
 		}
+    	
     	txtResult.setText(stampa);
     	txtParola.setText("");
     	String tempo = "" + (time);
@@ -63,7 +65,10 @@ public class FXMLController {
     void doReset(ActionEvent event) {
     	txtResult.setText("");
     	txtTempo.setText("");
+    	double start = System.nanoTime();
     	elenco.reset();
+    	double time = (System.nanoTime() - start)/1e9;
+    	txtTempo.appendText("RESET: " + time + "s"+"\n");
     }
 
     @FXML
